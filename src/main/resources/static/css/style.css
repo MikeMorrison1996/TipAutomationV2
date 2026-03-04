@@ -1,0 +1,624 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #007aff;
+    --primary-light: #5ac8fa;
+    --bg-light: #f2f2f7;
+    --bg-white: #ffffff;
+    --text-primary: #000;
+    --text-secondary: #6e6e73;
+    --border: #e5e5ea;
+    --success: #34c759;
+    --danger: #ff3b30;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #0a84ff;
+        --bg-light: #000;
+        --bg-white: #1c1c1e;
+        --text-primary: #fff;
+        --text-secondary: #a1a1a6;
+        --border: #38383a;
+    }
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    transition: background-color 0.3s ease;
+}
+
+.app {
+    width: 100%;
+    max-width: 480px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 10px;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    color: var(--text-primary);
+}
+
+.card {
+    background: var(--bg-white);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    animation: slideUp 0.5s ease-out;
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Input Styles */
+.label-text {
+    display: block;
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.currency-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.tip-per-hour {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 6px;
+    min-height: 16px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+input {
+    width: 100%;
+    padding: 12px 12px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    background: var(--bg-white);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Override padding for currency input */
+.currency-input input {
+    padding: 12px 12px 12px 28px;
+    margin: 0;
+}
+
+.input-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.input-row input {
+    flex: 1;
+    margin: 0;
+}
+
+.input-row input:first-child {
+    flex: 2;
+}
+
+.input-row input:nth-child(2) {
+    flex: 1;
+}
+
+/* Button Styles */
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.btn-add {
+    background: var(--primary);
+    color: white;
+    white-space: nowrap;
+    padding: 12px 16px;
+}
+
+.btn-add:hover {
+    background: var(--primary-light);
+}
+
+button.primary {
+    background: var(--primary);
+    color: white;
+    width: 100%;
+    margin-top: 12px;
+}
+
+button.primary:hover {
+    background: var(--primary-light);
+}
+
+button.secondary {
+    background: var(--border);
+    color: var(--text-primary);
+    width: 100%;
+    margin-top: 8px;
+}
+
+button.secondary:hover {
+    background: #d1d1d6;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+/* Employee List Styles */
+.employees-list {
+    margin-top: 12px;
+}
+
+.employee-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.employee-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--bg-light);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.employee-row:hover {
+    background: #e5e5ea;
+}
+
+@media (prefers-color-scheme: dark) {
+    .employee-row:hover {
+        background: #2c2c2e;
+    }
+}
+
+.employee-name {
+    flex: 1;
+    font-weight: 500;
+    font-size: 15px;
+    min-width: 100px;
+}
+
+.employee-hours {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.employee-hours input {
+    width: 60px;
+    padding: 6px 8px;
+    text-align: center;
+    margin: 0;
+}
+
+.employee-hours span {
+    font-size: 13px;
+    color: var(--text-secondary);
+    min-width: 40px;
+}
+
+.delete-btn {
+    background: var(--danger);
+    color: white;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.delete-btn:hover {
+    background: #ff453a;
+}
+
+/* Summary Card */
+.summary-card {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    margin-bottom: 16px;
+}
+
+.summary-card h2 {
+    color: white;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* Results Card */
+.results-card {
+    min-height: 120px;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 24px 0;
+    font-size: 15px;
+    margin: 0;
+}
+
+.distribution-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.distribution-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: var(--bg-light);
+    border-radius: 10px;
+    animation: slideUp 0.3s ease-out;
+}
+
+.emp-name {
+    font-weight: 500;
+    flex: 1;
+}
+
+.emp-hours {
+    color: var(--text-secondary);
+    font-size: 14px;
+    min-width: 50px;
+    text-align: right;
+}
+
+.emp-tip {
+    font-weight: 600;
+    color: var(--success);
+    min-width: 80px;
+    text-align: right;
+    font-size: 16px;
+}
+
+.results-list {
+    min-height: 60px;
+}
+
+/* History Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: var(--bg-white);
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    max-width: 480px;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease-out;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 18px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--bg-white);
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.close-btn {
+    background: var(--border);
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.history-list {
+    padding: 16px;
+}
+
+.history-sessions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.history-session {
+    padding: 16px;
+    background: var(--bg-light);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.history-session:hover {
+    background: #e5e5ea;
+}
+
+@media (prefers-color-scheme: dark) {
+    .history-session:hover {
+        background: #2c2c2e;
+    }
+}
+
+.session-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.session-date {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.session-details {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.delete-history-btn {
+    background: var(--danger);
+    color: white;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delete-history-btn:hover {
+    background: #ff453a;
+    transform: scale(1.05);
+}
+
+.delete-history-btn:active {
+    transform: scale(0.95);
+}
+
+.session-employees {
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+}
+
+.history-employee {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    padding: 6px 0;
+}
+
+.history-tip {
+    font-weight: 600;
+    color: var(--success);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
+    .app {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 4px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    .card {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .input-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .input-row input {
+        width: 100%;
+    }
+
+    .input-row button {
+        width: 100%;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .employee-row {
+        padding: 10px;
+    }
+
+    .modal-content {
+        border-radius: 16px 16px 0 0;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+    }
+
+    .card {
+        page-break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid var(--border);
+    }
+
+    button {
+        display: none;
+    }
+
+    .modal {
+        display: none;
+    }
+}

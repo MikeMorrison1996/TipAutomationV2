@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Tip Automation</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="header">
+        <h1>💰 Tip Automation</h1>
+        <p class="subtitle">Fair tip distribution in seconds</p>
+    </div>
+
+    <!-- Tips Input Card -->
+    <div class="card">
+        <label for="tips" class="label-text">Total Tips to Distribute</label>
+        <div class="currency-input">
+            <span class="currency-symbol">$</span>
+            <input id="tips" type="number" placeholder="0.00" min="0" step="0.01">
+        </div>
+        <div id="tipPerHour" class="tip-per-hour"></div>
+    </div>
+
+    <!-- Employees Card -->
+    <div class="card">
+        <h2>Employees</h2>
+
+        <div class="input-row">
+            <input id="name" placeholder="Employee name">
+            <input id="hours" type="number" placeholder="Hours" min="0" step="0.5">
+            <button class="btn-add" onclick="addEmployee()">+ Add</button>
+        </div>
+
+        <div id="employeesList" class="employees-list">
+            <!-- Employees will be rendered here -->
+        </div>
+    </div>
+
+    <!-- Summary Statistics Card -->
+    <div class="card summary-card">
+        <h2>Summary</h2>
+        <div class="stats-grid">
+            <div class="stat">
+                <div class="stat-value" id="totalEmployees">0</div>
+                <div class="stat-label">Employees</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="totalHours">0</div>
+                <div class="stat-label">Total Hours</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="avgTip">$0.00</div>
+                <div class="stat-label">Avg per Employee</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Card -->
+    <div class="card results-card">
+        <h2>Tip Distribution</h2>
+        <div id="results" class="results-list">
+            <p class="empty-state">Add employees and tips to see distribution</p>
+        </div>
+
+        <div class="button-group">
+            <button class="primary" onclick="save()" id="saveBtn" style="display:none;">💾 Save Session</button>
+            <button class="secondary" onclick="loadHistory()">📋 View History</button>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div id="historyModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Tip Sessions History</h2>
+                <button class="close-btn" onclick="closeHistory()">✕</button>
+            </div>
+            <div id="history" class="history-list">
+                <!-- History will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="/js/app.js"></script>
+
+</body>
+</html>
